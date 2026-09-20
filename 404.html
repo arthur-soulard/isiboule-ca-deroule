@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>isi boule ça déroule</title>
+<meta name="description" content="isi boule ça déroule — arthursoulard1312@gmail.com">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#04101f">
+<style>
+  :root{
+    --navy:#04101f;
+    --navy-mid:#0d3157;
+    --navy-hi:#17538c;
+    --ink:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;width:100%}
+  body{
+    background:var(--navy);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    overflow:hidden;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  /* la page entière est un lien mailto */
+  a.sheet{
+    position:fixed;
+    inset:0;
+    display:block;
+    color:inherit;
+    text-decoration:none;
+    outline:none;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 130% 90% at 50% -10%, var(--navy-hi) 0%, transparent 58%),
+      radial-gradient(ellipse 110% 80% at 50% 110%, var(--navy-mid) 0%, transparent 62%),
+      var(--navy);
+  }
+  a.sheet:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+
+  /* nappe de mails dans tous les sens */
+  .field{position:absolute;inset:-12%;pointer-events:none}
+  .m{
+    position:absolute;
+    white-space:nowrap;
+    font-weight:600;
+    letter-spacing:.02em;
+    color:#fff;
+    user-select:none;
+    will-change:transform;
+  }
+  @keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+  .m.turn{animation:spin linear infinite}
+
+  /* bloc central */
+  .center{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    text-align:center;
+    padding:24px;
+    pointer-events:none;
+  }
+  .plate{
+    padding:26px 34px;
+    border:1px solid rgba(255,255,255,.28);
+    border-radius:18px;
+    background:rgba(4,16,31,.62);
+    backdrop-filter:blur(7px);
+    -webkit-backdrop-filter:blur(7px);
+    box-shadow:0 24px 70px rgba(0,0,0,.55);
+    max-width:min(94vw,780px);
+  }
+  .kicker{
+    font-size:clamp(11px,1.5vw,14px);
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    opacity:.72;
+    margin-bottom:14px;
+  }
+  .mail{
+    font-size:clamp(20px,5.2vw,52px);
+    font-weight:800;
+    letter-spacing:-.01em;
+    line-height:1.12;
+    word-break:break-all;
+  }
+  .sub{
+    margin-top:16px;
+    font-size:clamp(12px,2vw,17px);
+    opacity:.8;
+  }
+  @keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+  .sub b{font-weight:700;animation:breathe 2.4s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){
+    .m.turn{animation:none}
+    .sub b{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<a class="sheet" id="sheet" href="mailto:arthursoulard1312@gmail.com" aria-label="Écrire à arthursoulard1312@gmail.com">
+
+  <div class="field" id="field" aria-hidden="true">
+    <!-- socle statique : la page reste pleine même sans JavaScript -->
+    <span class="m" style="left:8%;top:9%;font-size:15px;opacity:.38;transform:translate(-50%,-50%) rotate(-24deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:74%;top:13%;font-size:12px;opacity:.30;transform:translate(-50%,-50%) rotate(41deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:22%;top:31%;font-size:19px;opacity:.26;transform:translate(-50%,-50%) rotate(90deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:91%;top:44%;font-size:14px;opacity:.34;transform:translate(-50%,-50%) rotate(-71deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:46%;top:6%;font-size:13px;opacity:.28;transform:translate(-50%,-50%) rotate(168deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:12%;top:63%;font-size:17px;opacity:.32;transform:translate(-50%,-50%) rotate(12deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:63%;top:78%;font-size:11px;opacity:.40;transform:translate(-50%,-50%) rotate(-135deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:33%;top:92%;font-size:16px;opacity:.27;transform:translate(-50%,-50%) rotate(57deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:86%;top:87%;font-size:13px;opacity:.31;transform:translate(-50%,-50%) rotate(-9deg)">arthursoulard1312@gmail.com</span>
+    <span class="m" style="left:4%;top:41%;font-size:12px;opacity:.29;transform:translate(-50%,-50%) rotate(115deg)">arthursoulard1312@gmail.com</span>
+  </div>
+
+  <div class="center">
+    <div class="plate">
+      <div class="kicker">isi boule ça déroule</div>
+      <div class="mail">arthursoulard1312@gmail.com</div>
+      <div class="sub">clique <b>n'importe où</b> pour m'écrire</div>
+    </div>
+  </div>
+
+</a>
+
+<script>
+(function(){
+  var MAIL = "arthursoulard1312@gmail.com";
+  var HREF = "mailto:" + MAIL;
+  var field = document.getElementById("field");
+
+  function fill(){
+    while(field.firstChild) field.removeChild(field.firstChild);
+    var w = window.innerWidth, h = window.innerHeight;
+    var n = Math.max(60, Math.min(460, Math.round((w * h) / 3400)));
+    var frag = document.createDocumentFragment();
+    for(var i = 0; i < n; i++){
+      var s = document.createElement("span");
+      s.className = "m";
+      s.textContent = MAIL;
+      var size = 8 + Math.random() * 20;
+      var rot = Math.floor(Math.random() * 360);
+      s.style.left = (Math.random() * 100).toFixed(2) + "%";
+      s.style.top = (Math.random() * 100).toFixed(2) + "%";
+      s.style.fontSize = size.toFixed(1) + "px";
+      s.style.opacity = (0.09 + Math.random() * 0.42).toFixed(2);
+      s.style.transform = "translate(-50%,-50%) rotate(" + rot + "deg)";
+      // une poignée tourne lentement sur elle-même
+      if(Math.random() < 0.12){
+        s.className = "m turn";
+        s.style.animationDuration = (22 + Math.random() * 40).toFixed(0) + "s";
+        if(Math.random() < 0.5) s.style.animationDirection = "reverse";
+        s.style.animationDelay = "-" + (Math.random() * 40).toFixed(0) + "s";
+      }
+      frag.appendChild(s);
+    }
+    field.appendChild(frag);
+  }
+
+  fill();
+
+  var t = null;
+  window.addEventListener("resize", function(){
+    clearTimeout(t);
+    t = setTimeout(fill, 220);
+  });
+
+  // filet de sécurité : si un clic atterrit hors du lien, on ouvre quand même le mail
+  document.addEventListener("click", function(e){
+    if(!e.target.closest("a.sheet")) window.location.href = HREF;
+  });
+})();
+</script>
+
+</body>
+</html>
